@@ -4,6 +4,8 @@ Skillpath is a landing page built for WebVeda's junior developer assignment. The
 page combines an editorial visual direction with a React code component that
 loads live course and country data from the supplied API.
 
+**Published Framer site:** https://slight-courgette-993297.framer.app
+
 ## Run locally
 
 ```bash
