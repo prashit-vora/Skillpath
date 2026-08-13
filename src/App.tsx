@@ -1,4 +1,4 @@
-import { CourseGrid } from "./CourseGrid"
+import CourseGrid from "./CourseGrid"
 
 export default function App() {
   const year = new Date().getFullYear()

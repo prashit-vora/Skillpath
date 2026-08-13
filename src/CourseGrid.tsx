@@ -3,7 +3,7 @@ import { addPropertyControls, ControlType } from "framer"
 
 const API_BASE_URL = "https://syncsphere-hiv6.onrender.com"
 
-export interface Course {
+interface Course {
   courseName: string
   courseCode: string
   description: string
@@ -16,7 +16,7 @@ export interface Course {
   refundable: boolean
 }
 
-export type CountryCode = "IN" | "US"
+type CountryCode = "IN" | "US"
 
 interface CourseGridProps {
   heading?: string
@@ -62,7 +62,7 @@ function isCourse(value: unknown): value is Course {
   })
 }
 
-export function parseCourses(value: unknown): Course[] {
+function parseCourses(value: unknown): Course[] {
   if (!Array.isArray(value) || !value.every(isCourse)) {
     throw new Error("Unexpected course response")
   }
@@ -70,7 +70,7 @@ export function parseCourses(value: unknown): Course[] {
   return value
 }
 
-export function parseCountry(value: unknown): CountryCode {
+function parseCountry(value: unknown): CountryCode {
   if (typeof value !== "object" || value === null) {
     throw new Error("Unexpected country response")
   }
@@ -108,7 +108,7 @@ async function fetchCountry(signal: AbortSignal): Promise<CountryCode> {
   )
 }
 
-export function formatPrice(course: Course, countryCode: CountryCode): string {
+function formatPrice(course: Course, countryCode: CountryCode): string {
   const isIndia = countryCode === "IN"
   const minorUnits = isIndia ? course.pricePaise : course.priceUsdCents
   const amount = minorUnits / 100
@@ -165,10 +165,10 @@ function StatusPanel({
 /**
  * Live courses section for the Skillpath Framer page.
  *
- * @framerSupportedLayoutWidth any
+ * @framerSupportedLayoutWidth any-prefer-fixed
  * @framerSupportedLayoutHeight auto
  */
-export function CourseGrid({
+export default function CourseGrid({
   heading = "Courses for your next move",
   accentColor = "#d9ff57",
   style,
@@ -319,6 +319,7 @@ const courseGridStyles = `
     --spc-ink: #18221c;
     --spc-paper: #f2f0e7;
     width: 100%;
+    position: relative;
     color: var(--spc-ink);
     background: var(--spc-paper);
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -583,5 +584,3 @@ const courseGridStyles = `
     .spc-skeleton { animation: none; }
   }
 `
-
-export default CourseGrid
