@@ -4,7 +4,7 @@
 
 - Published Framer page: https://slight-courgette-993297.framer.app
 - Public source code: https://github.com/prashit-vora/Skillpath
-- Shared AI conversation: **Add after creating the share link**
+- AI conversation transcript: [AI_CHAT_TRANSCRIPT.md](AI_CHAT_TRANSCRIPT.md)
 
 ## Short note (under 200 words)
 
